@@ -1,19 +1,28 @@
 from experta import *
 from flask import Flask, request, jsonify, render_template
+import re
 
 app = Flask(__name__)
+
+PALAVRAS_RAM = [
+    r"\btela\b.*\bazul\b", # \b pra delimitar pra não pegar "estrelado" por exemplo, e o .* serve pra dizer que pode ter qualquer coisa no meio
+    r"\bn[aã]o liga\b",
+    r"\bn[aã]o est[aá] ligando\b"   
+]
 
 class Cliente(Fact):
     pass
 
 class SuporteTecnico(KnowledgeEngine):
+    
     def __init__(self):
         super().__init__()
         self.resposta = "❌ Problema não identificado."
 
-    @Rule(Cliente(problema=P(lambda x: "tela azul" in x.lower())))
+    @Rule(Cliente(problema=P(lambda x: any(re.search(p, x) for p in PALAVRAS_RAM))))
     def problema_memoria(self):
-        self.resposta = "💾 Provavelmente um problema de memória RAM."
+        self.resposta = "💾 Problema de memória RAM ou energia."
+        self.halt()
 
     @Rule(Cliente(problema=P(lambda x: "internet" in x.lower())))
     def problema_rede(self):
