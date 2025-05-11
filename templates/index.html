@@ -37,6 +37,7 @@
             adicionarMensagem("usuario", "Você: " + mensagem);
             input.value = "";
 
+            // envia para o backend a mensagem digitada pelo usuário
             fetch("/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -45,7 +46,7 @@
             .then(res => res.json())
             .then(data => adicionarMensagem("bot", "Bot: " + data.resposta));
         }
-
+        
         document.getElementById("mensagem").addEventListener("keypress", function(e) {
             if (e.key === "Enter") enviar();
         });
