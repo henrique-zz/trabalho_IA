@@ -163,11 +163,11 @@ PALAVRAS_ARMAZENAMENTO = [
 
 PALAVRAS_DISPOSITIVOS = [
     r"\bteclado ou mouse n[aã]o respondem\b",
-    r"\bmouse nao funciona\b",
-    r"\bteclado nao funciona\b",
-    r"\bnao consigo clicar\b",
-    r"\busb nao funciona\b",
-    r"\bconecto e nao funciona\b",
+    r"\bmouse n[aã]o funciona\b",
+    r"\bteclado n[aã]o funciona\b",
+    r"\bn[aã]o consigo clicar\b",
+    r"\busb n[aã]o funciona\b",
+    r"\bconecto e n[aã]o funciona\b",
     r"\bdriver ausente ou desatualizados\b",
     r"\bdriver n[aã]o instalado\b",
     r"\bdriver\b.*\bfaltando\b",
