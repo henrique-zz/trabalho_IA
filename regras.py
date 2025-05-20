@@ -1,5 +1,8 @@
 import re
 
+# nesta classe estão presentes os vetores com as palavras utilizadas para fazer o diagnóstico, esta classe é utilizada na classe sistema_especialista para conseguirmos comparar
+# a entrada do usuário com qual regra que será acionada. tudo isso com o uso de expressões regulares para melhor análise das entradas do usuário.
+
 PALAVRAS_SAUDACOES = [
     r"\boi\b",  # \b pra delimitar pra não pegar "estrelado" por exemplo, e o .* serve pra dizer que pode ter qualquer coisa no meio
     r"\bol[aá]\b"

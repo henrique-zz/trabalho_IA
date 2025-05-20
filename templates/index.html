@@ -20,6 +20,7 @@
     </div>
 
     <script>
+        // adiciona uma nova mensagem ao chat
         function adicionarMensagem(tipo, texto) {
             const chat = document.getElementById("chat");
             const msg = document.createElement("div");
@@ -29,6 +30,7 @@
             chat.scrollTop = chat.scrollHeight;
         }
 
+        // chamada quando o usuário envia uma mensagem
         function enviar() {
             const input = document.getElementById("mensagem");
             const mensagem = input.value.trim();
@@ -39,16 +41,16 @@
 
             // envia para o backend a mensagem digitada pelo usuário
             fetch("/chat", {
-                method: "POST",
+                method: "POST", // método POST do HTTP
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ mensagem })
+                body: JSON.stringify({ mensagem }) // converte a mensagem para JSON e envia no corpo da requisição
             })
             .then(res => res.json())
             .then(data => adicionarMensagem("bot", "Bot: " + data.resposta));
         }
         
         document.getElementById("mensagem").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") enviar();
+            if (e.key === "Enter") enviar(); // se a tecla pressionada for Enter, chama a função enviar()
         });
     </script>
 </body>
